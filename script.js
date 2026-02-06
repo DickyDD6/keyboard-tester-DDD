@@ -177,6 +177,16 @@ function handleKeyClick(event) {
 
 // Event Listeners
 document.addEventListener('keydown', (e) => {
+    // Don't handle keyboard events when modal is open
+    const profileModal = document.getElementById('profileModal');
+    if (profileModal && profileModal.classList.contains('active')) {
+        // Only handle Escape to close modal
+        if (e.key === 'Escape') {
+            profileModal.classList.remove('active');
+        }
+        return;
+    }
+
     preventDefaults(e);
     handleKeyDown(e);
 });
@@ -298,12 +308,29 @@ function getTestedKeysCount() {
     return testedKeys.size;
 }
 
-// Update stats to show unique keys (optional enhancement)
-setInterval(() => {
-    const uniqueKeysCount = getTestedKeysCount();
-    if (uniqueKeysCount > 0) {
-        // Could add this to the UI if desired
-        console.log(`Unique keys tested: ${uniqueKeysCount}`);
-    }
-}, 5000);
+// Unique keys count is available via getTestedKeysCount() if needed
 
+
+// Profile Modal Functionality
+
+const profileModal = document.getElementById('profileModal');
+const openProfileBtn = document.getElementById('openProfileModal');
+const closeProfileBtn = document.getElementById('closeProfileModal');
+
+// Open modal when badge is clicked
+openProfileBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    profileModal.classList.add('active');
+});
+
+// Close modal when X button is clicked
+closeProfileBtn.addEventListener('click', () => {
+    profileModal.classList.remove('active');
+});
+
+// Close modal when clicking outside the content
+profileModal.addEventListener('click', (e) => {
+    if (e.target === profileModal) {
+        profileModal.classList.remove('active');
+    }
+});
