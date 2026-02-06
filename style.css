@@ -1,0 +1,753 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    color: #ffffff;
+    min-height: 100vh;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* Container */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: #000000;
+    border: 2px solid #333333;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 60px rgba(255, 255, 255, 0.1);
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #333333;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    color: #999999;
+    font-size: 1.1em;
+}
+
+/* Stats Section */
+.stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.stat-label {
+    color: #999999;
+    font-size: 0.9em;
+}
+
+.stat-value {
+    color: #ffffff;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.reset-btn {
+    background: #ffffff;
+    color: #000000;
+    border: 2px solid #ffffff;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.reset-btn:hover {
+    background: #000000;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+.reset-btn:active {
+    transform: translateY(0);
+}
+
+/* Layout Selector */
+.layout-selector {
+    background: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.layout-selector h3 {
+    margin-bottom: 15px;
+    color: #ffffff;
+    font-size: 1.2em;
+}
+
+.layout-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.layout-btn {
+    background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+    color: #ffffff;
+    border: 2px solid #404040;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 80px;
+}
+
+.layout-btn:hover {
+    background: linear-gradient(180deg, #3a3a3a 0%, #2a2a2a 100%);
+    border-color: #606060;
+    transform: translateY(-2px);
+}
+
+.layout-btn.active {
+    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+    color: #000000;
+    border-color: #ffffff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+.layout-description {
+    color: #999999;
+    font-size: 0.95em;
+    margin: 0;
+}
+
+
+/* Keyboard Container */
+.keyboard-container {
+    background: #0a0a0a;
+    border: 2px solid #222222;
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Keyboard Layout - Side by Side */
+.keyboard-layout {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+/* Main Keyboard Section */
+.main-keyboard {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Navigation Section (Right Side) */
+.nav-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 66px;
+    /* Skip function row height to align with number row */
+}
+
+/* Special Keys Grid - 3x2 layout */
+.special-keys {
+    display: grid;
+    grid-template-columns: repeat(3, 50px);
+    gap: 6px;
+}
+
+/* Arrow Keys - positioned to align with bottom rows */
+.arrow-section {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+    margin-top: auto;
+    /* Push to bottom */
+    padding-top: 58px;
+    /* Create gap to align with shift/ctrl rows */
+}
+
+.arrow-row-1 {
+    display: flex;
+    justify-content: center;
+}
+
+.arrow-row-2 {
+    display: flex;
+    gap: 6px;
+}
+
+.arrow-key {
+    font-size: 1.2em;
+    min-width: 50px;
+}
+
+/* Numpad Section - Using CSS Grid */
+.numpad-section {
+    display: grid;
+    grid-template-columns: repeat(4, 50px);
+    grid-template-rows: repeat(5, 50px);
+    gap: 6px;
+    padding-top: 66px;
+    /* Align with number row */
+    margin-left: 10px;
+}
+
+/* Numpad key positioning */
+.numpad-section .key[data-key="NumLock"] {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.numpad-section .key[data-key="NumpadDivide"] {
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+.numpad-section .key[data-key="NumpadMultiply"] {
+    grid-area: 1 / 3 / 2 / 4;
+}
+
+.numpad-section .key[data-key="NumpadSubtract"] {
+    grid-area: 1 / 4 / 2 / 5;
+}
+
+.numpad-section .key[data-key="Numpad7"] {
+    grid-area: 2 / 1 / 3 / 2;
+}
+
+.numpad-section .key[data-key="Numpad8"] {
+    grid-area: 2 / 2 / 3 / 3;
+}
+
+.numpad-section .key[data-key="Numpad9"] {
+    grid-area: 2 / 3 / 3 / 4;
+}
+
+.numpad-section .key[data-key="Numpad4"] {
+    grid-area: 3 / 1 / 4 / 2;
+}
+
+.numpad-section .key[data-key="Numpad5"] {
+    grid-area: 3 / 2 / 4 / 3;
+}
+
+.numpad-section .key[data-key="Numpad6"] {
+    grid-area: 3 / 3 / 4 / 4;
+}
+
+.numpad-section .key[data-key="Numpad1"] {
+    grid-area: 4 / 1 / 5 / 2;
+}
+
+.numpad-section .key[data-key="Numpad2"] {
+    grid-area: 4 / 2 / 5 / 3;
+}
+
+.numpad-section .key[data-key="Numpad3"] {
+    grid-area: 4 / 3 / 5 / 4;
+}
+
+.numpad-section .key[data-key="NumpadDecimal"] {
+    grid-area: 5 / 3 / 6 / 4;
+}
+
+/* Numpad special keys - Span 2 rows */
+.numpad-plus {
+    grid-area: 2 / 4 / 4 / 5 !important;
+    height: auto !important;
+}
+
+.numpad-enter {
+    grid-area: 4 / 4 / 6 / 5 !important;
+    height: auto !important;
+}
+
+/* Numpad zero - Span 2 columns */
+.numpad-zero {
+    grid-area: 5 / 1 / 6 / 3 !important;
+    min-width: auto !important;
+}
+
+.numpad-row {
+    display: contents;
+}
+
+.keyboard-row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 8px;
+    justify-content: center;
+}
+
+/* Key Styles */
+.key {
+    background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+    color: #ffffff;
+    border: 2px solid #404040;
+    border-radius: 6px;
+    padding: 15px;
+    min-width: 50px;
+    height: 50px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.2;
+    box-shadow: 0 4px 0 #0a0a0a, 0 2px 8px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.key:hover {
+    background: linear-gradient(180deg, #3a3a3a 0%, #2a2a2a 100%);
+    border-color: #606060;
+    transform: translateY(-2px);
+}
+
+/* Active/Pressed State */
+.key.active {
+    background: linear-gradient(180deg, #ffffff 0%, #e0e0e0 100%);
+    color: #000000;
+    border-color: #ffffff;
+    transform: translateY(2px);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6),
+        0 0 40px rgba(255, 255, 255, 0.4);
+    animation: pulse 0.3s ease;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: translateY(2px) scale(1);
+    }
+
+    50% {
+        transform: translateY(2px) scale(1.05);
+    }
+}
+
+/* Key Size Variations */
+.key-medium {
+    min-width: 75px;
+}
+
+.key-large {
+    min-width: 90px;
+}
+
+.key-xlarge {
+    min-width: 110px;
+}
+
+.key-space {
+    min-width: 300px;
+}
+
+/* Key Spacers */
+.key-spacer {
+    width: 40px;
+}
+
+.key-spacer-small {
+    width: 20px;
+}
+
+/* Info Panel */
+.info-panel {
+    background: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.info-panel h3 {
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.info-content p {
+    margin-bottom: 10px;
+    color: #cccccc;
+}
+
+.info-content strong {
+    color: #ffffff;
+    min-width: 100px;
+    display: inline-block;
+}
+
+.info-content span {
+    color: #999999;
+    font-family: 'Courier New', monospace;
+    background: #0a0a0a;
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid #333333;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 2px solid #333333;
+    color: #666666;
+    font-size: 0.9em;
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+    .keyboard-layout {
+        transform: scale(0.9);
+        transform-origin: top center;
+    }
+}
+
+@media (max-width: 1200px) {
+    .keyboard-container {
+        padding: 20px;
+    }
+
+    .keyboard-layout {
+        transform: scale(0.75);
+        transform-origin: top center;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .key {
+        min-width: 40px;
+        height: 40px;
+        padding: 10px;
+        font-size: 0.8em;
+    }
+
+    .key-space {
+        min-width: 250px;
+    }
+
+    .nav-section {
+        padding-top: 0;
+        flex-direction: row;
+        gap: 30px;
+    }
+
+    /* Responsive numpad for smaller screens */
+    .numpad-section {
+        grid-template-columns: repeat(4, 40px);
+        grid-template-rows: repeat(5, 40px);
+        padding-top: 0;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 15px;
+        overflow-x: hidden;
+    }
+
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    .stats {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .keyboard-container {
+        padding: 15px;
+    }
+
+    .keyboard-layout {
+        transform: scale(0.5);
+        transform-origin: top center;
+    }
+
+    .keyboard-row {
+        gap: 4px;
+        margin-bottom: 6px;
+    }
+
+    .key {
+        min-width: 30px;
+        height: 35px;
+        padding: 8px;
+        font-size: 0.7em;
+    }
+
+    .key-medium {
+        min-width: 55px;
+    }
+
+    .key-large {
+        min-width: 65px;
+    }
+
+    .key-xlarge {
+        min-width: 75px;
+    }
+
+    .key-space {
+        min-width: 180px;
+    }
+
+    /* Responsive numpad for mobile */
+    .numpad-section {
+        grid-template-columns: repeat(4, 30px);
+        grid-template-rows: repeat(5, 35px);
+    }
+}
+
+/* Tested Key State */
+.key.tested {
+    border-color: #4CAF50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+}
+
+/* Animations */
+@keyframes glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
+    }
+}
+
+/* Keyboard Layout Visibility Rules */
+/* Hide elements by default, show based on layout */
+.function-row,
+.nav-section {
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+/* 40% Layout - No number row, no function keys, compact */
+/* Hide: F-row, number row, brackets, some modifiers, nav section */
+.layout-40 .function-row,
+.layout-40 .main-keyboard .keyboard-row:nth-child(2),
+.layout-40 .main-keyboard .keyboard-row:nth-child(3) [data-key="Tab"],
+.layout-40 .main-keyboard .keyboard-row:nth-child(3) [data-key="["],
+.layout-40 .main-keyboard .keyboard-row:nth-child(3) [data-key="]"],
+.layout-40 .main-keyboard .keyboard-row:nth-child(3) [data-key="\\"],
+.layout-40 .main-keyboard .keyboard-row:nth-child(4) [data-key="CapsLock"],
+.layout-40 .main-keyboard .keyboard-row:nth-child(4) [data-key=";"],
+.layout-40 .main-keyboard .keyboard-row:nth-child(4) [data-key="'"],
+.layout-40 .main-keyboard .keyboard-row:nth-child(5) [data-key=","],
+.layout-40 .main-keyboard .keyboard-row:nth-child(5) [data-key="."],
+.layout-40 .main-keyboard .keyboard-row:nth-child(5) [data-key="/"],
+.layout-40 .main-keyboard .keyboard-row:nth-child(6) [data-key="MetaLeft"],
+.layout-40 .main-keyboard .keyboard-row:nth-child(6) [data-key="MetaRight"],
+.layout-40 .main-keyboard .keyboard-row:nth-child(6) [data-key="ContextMenu"],
+.layout-40 .main-keyboard .keyboard-row:nth-child(6) [data-key="ControlRight"],
+.layout-40 .nav-section {
+    display: none;
+}
+
+/* 50% Layout - Compact with numbers, QWERTY, minimal modifiers */
+/* Hide: F-row, tilde, brackets, some punctuation, special keys only */
+.layout-50 .function-row,
+.layout-50 .main-keyboard .keyboard-row:nth-child(2) [data-key="`"],
+.layout-50 .main-keyboard .keyboard-row:nth-child(2) [data-key="-"],
+.layout-50 .main-keyboard .keyboard-row:nth-child(2) [data-key="="],
+.layout-50 .main-keyboard .keyboard-row:nth-child(3) [data-key="["],
+.layout-50 .main-keyboard .keyboard-row:nth-child(3) [data-key="]"],
+.layout-50 .main-keyboard .keyboard-row:nth-child(3) [data-key="\\"],
+.layout-50 .main-keyboard .keyboard-row:nth-child(4) [data-key="CapsLock"],
+.layout-50 .main-keyboard .keyboard-row:nth-child(4) [data-key=";"],
+.layout-50 .main-keyboard .keyboard-row:nth-child(4) [data-key="'"],
+.layout-50 .main-keyboard .keyboard-row:nth-child(5) [data-key=","],
+.layout-50 .main-keyboard .keyboard-row:nth-child(5) [data-key="."],
+.layout-50 .main-keyboard .keyboard-row:nth-child(5) [data-key="/"],
+.layout-50 .main-keyboard .keyboard-row:nth-child(6) [data-key="MetaLeft"],
+.layout-50 .main-keyboard .keyboard-row:nth-child(6) [data-key="MetaRight"],
+.layout-50 .main-keyboard .keyboard-row:nth-child(6) [data-key="ContextMenu"],
+.layout-50 .main-keyboard .keyboard-row:nth-child(6) [data-key="ControlRight"],
+.layout-50 .special-keys {
+    display: none;
+}
+
+/* 60% Layout - No function keys, no nav cluster, no arrows */
+.layout-60 .function-row,
+.layout-60 .nav-section {
+    display: none;
+}
+
+/* 65% Layout - No function keys, no nav cluster, but has arrows */
+.layout-65 .function-row,
+.layout-65 .special-keys {
+    display: none;
+}
+
+/* 70% Layout - No function keys, compact nav */
+.layout-70 .function-row {
+    display: none;
+}
+
+/* 75% Layout - Compact with F-keys */
+.layout-75 .special-keys {
+    display: none;
+}
+
+/* 80% Layout - Has F-keys but compact nav */
+.layout-80 .special-keys [data-key="Insert"],
+.layout-80 .special-keys [data-key="Home"],
+.layout-80 .special-keys [data-key="PageUp"] {
+    display: none;
+}
+
+/* TKL Layout - No numpad, everything else visible */
+.layout-tkl .numpad-section {
+    display: none;
+}
+
+/* Hide numpad on all layouts except fullsize */
+.layout-40 .numpad-section,
+.layout-50 .numpad-section,
+.layout-60 .numpad-section,
+.layout-65 .numpad-section,
+.layout-70 .numpad-section,
+.layout-75 .numpad-section,
+.layout-80 .numpad-section {
+    display: none;
+}
+
+/* Full Size - Everything visible (default) */
+
+/* Smooth transition for layout changes */
+.keyboard-container {
+    transition: all 0.3s ease;
+}
+
+.key {
+    transition: all 0.2s ease, opacity 0.3s ease;
+}
+
+/* ========================================
+   Watermark Badge - Made by DDD
+   ======================================== */
+.watermark-badge {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 18px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 0.85em;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.watermark-badge:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2);
+}
+
+.watermark-badge .badge-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    animation: float 3s ease-in-out infinite;
+}
+
+.watermark-badge .badge-text {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.watermark-badge .badge-text strong {
+    color: #ffffff;
+    font-weight: 700;
+    background: linear-gradient(135deg, #fff 0%, #ccc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+/* Responsive: hide text on small screens */
+@media (max-width: 768px) {
+    .watermark-badge {
+        padding: 10px 14px;
+    }
+
+    .watermark-badge .badge-text {
+        display: none;
+    }
+}
