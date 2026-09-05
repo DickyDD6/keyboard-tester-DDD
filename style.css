@@ -167,6 +167,12 @@ header h1 {
     justify-content: center;
     overflow: hidden;
 }
+.layout-fullsize .keyboard-container {
+    overflow: visible; /* allow edge buttons to be fully visible */
+    padding-left: 0; /* remove extra left padding that can cause clipping */
+    padding-right: 0; /* remove extra right padding */
+}
+
 
 /* Keyboard Layout - Side by Side */
 .keyboard-layout {
@@ -316,9 +322,14 @@ header h1 {
 
 .keyboard-row {
     display: flex;
-    gap: 6px;
-    margin-bottom: 8px;
+    gap: 2px; /* default spacing for other layouts */
+    margin-bottom: 2px; /* default vertical spacing */
     justify-content: center;
+}
+
+.layout-fullsize .keyboard-row {
+    gap: 1px; /* tighter spacing for fullsize layout */
+    margin-bottom: 1px;
 }
 
 /* Key Styles */
@@ -376,6 +387,14 @@ header h1 {
 .key-medium {
     min-width: 75px;
 }
+
+/* Slightly scale down keys in fullsize layout to avoid clipping */
+.layout-fullsize .key {
+    transform: scale(0.93);
+    transform-origin: center;
+}
+
+
 
 .key-large {
     min-width: 90px;

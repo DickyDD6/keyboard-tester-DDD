@@ -29,23 +29,38 @@ const keyMap = {
 
 // Find key element by key value
 function findKeyElement(key, code) {
-    // Helper function to escape special characters for CSS selectors
-    function escapeSelector(str) {
-        // Escape special characters: \ " ' and other CSS special chars
-        return str.replace(/[\\"']/g, '\\$&');
+    // Polyfill for CSS.escape if not supported
+    if (typeof CSS === 'undefined' || typeof CSS.escape !== 'function') {
+        // Simple escape for characters that need escaping in attribute selectors
+        window.CSS = {
+            escape: function (str) {
+                return str.replace(/[\\"'\[\]=]/g, '\\$&');
+            }
+        };
     }
 
-    // Try to find by code first (more accurate)
-    let keyElement = document.querySelector(`[data-key="${escapeSelector(code)}"]`);
+    // Mapping for characters that appear when Shift is held (e.g., '!') to their base key label
+    const shiftMap = {
+        '!': '1', '@': '2', '#': '3', '$': '4', '%': '5', '^': '6', '&': '7', '*': '8', '(': '9', ')': '0',
+        '_': '-', '+': '=', '{': '[', '}': ']', '|': '\\', ':': ';', '"': "'", '<': ',', '>': '.', '?': '/'
+    };
 
-    // If not found, try by key
+    // Try to find by code first (more accurate, e.g., "Digit1")
+    let keyElement = document.querySelector(`[data-key="${CSS.escape(code)}"]`);
+
+    // If not found, try by the raw key value
     if (!keyElement) {
-        keyElement = document.querySelector(`[data-key="${escapeSelector(key)}"]`);
+        keyElement = document.querySelector(`[data-key="${CSS.escape(key)}"]`);
     }
 
-    // Special handling for letter keys (case-insensitive)
+    // Special handling for letter keys (case‑insensitive)
     if (!keyElement && key.length === 1) {
-        keyElement = document.querySelector(`[data-key="${escapeSelector(key.toLowerCase())}"]`);
+        keyElement = document.querySelector(`[data-key="${CSS.escape(key.toLowerCase())}"]`);
+    }
+
+    // Handle shifted symbols (e.g., '!') by mapping to the base key label
+    if (!keyElement && shiftMap[key]) {
+        keyElement = document.querySelector(`[data-key="${CSS.escape(shiftMap[key])}"]`);
     }
 
     // Handle space key
@@ -55,7 +70,6 @@ function findKeyElement(key, code) {
 
     return keyElement;
 }
-
 // Handle key press (keydown)
 function handleKeyDown(event) {
     event.preventDefault();
